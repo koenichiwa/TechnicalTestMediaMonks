@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -35,4 +37,18 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$versions.nav"
+    implementation "androidx.navigation:navigation-ui-ktx:$versions.nav"
+
+    //retrofit
+    implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+
+    //koin
+    implementation "org.koin:koin-android:$versions.koin"
+    implementation "org.koin:koin-core:$versions.koin"
+    implementation "org.koin:koin-androidx-viewmodel:$versions.koin"
+    implementation "org.koin:koin-androidx-scope:$versions.koin"
 }
