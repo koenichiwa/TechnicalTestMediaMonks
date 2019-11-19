@@ -1,4 +1,4 @@
-package com.kvw.technicaltestmediamonks.ui.user_albums
+package com.kvw.technicaltestmediamonks.ui.useralbums
 
 import android.view.LayoutInflater
 import android.view.View
