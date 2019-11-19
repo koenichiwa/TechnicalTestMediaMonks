@@ -23,9 +23,9 @@ object KoinModules {
         viewModel { (user: User) ->UserAlbumsViewModel(get(), user) }
     }
 
-    val JSON_PLACEHOLDER_BASE_URL = "https://jsonplaceholder.typicode.com/"
+    private const val JSON_PLACEHOLDER_BASE_URL = "https://jsonplaceholder.typicode.com/"
 
-    fun provideRetrofit(): Retrofit {
+    private fun provideRetrofit(): Retrofit {
         return Retrofit
             .Builder()
             .addConverterFactory(GsonConverterFactory.create())
@@ -33,10 +33,10 @@ object KoinModules {
             .build()
     }
 
-    fun provideUserService(retrofit: Retrofit): UserService =
+    private fun provideUserService(retrofit: Retrofit): UserService =
         retrofit.create(UserService::class.java)
 
-    fun provideAlbumService(retrofit: Retrofit) =
+    private fun provideAlbumService(retrofit: Retrofit): AlbumService =
         retrofit.create(AlbumService::class.java)
 
 }
