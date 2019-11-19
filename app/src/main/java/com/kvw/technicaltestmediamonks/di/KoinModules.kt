@@ -3,7 +3,7 @@ package com.kvw.technicaltestmediamonks.di
 import com.kvw.technicaltestmediamonks.models.User
 import com.kvw.technicaltestmediamonks.services.AlbumService
 import com.kvw.technicaltestmediamonks.services.UserService
-import com.kvw.technicaltestmediamonks.ui.user_albums.UserAlbumsViewModel
+import com.kvw.technicaltestmediamonks.ui.useralbums.UserAlbumsViewModel
 import com.kvw.technicaltestmediamonks.ui.users.UsersViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
