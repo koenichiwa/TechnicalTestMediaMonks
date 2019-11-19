@@ -10,7 +10,7 @@ import com.kvw.technicaltestmediamonks.services.UserService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class UsersViewModel(private val userService: UserService) : ViewModel() {
+class UsersViewModel(userService: UserService) : ViewModel() {
 
     private val _users = MutableLiveData<List<User>>(emptyList())
     val users: LiveData<List<User>> get() = _users

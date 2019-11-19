@@ -9,5 +9,18 @@
         android:id="@+id/usersFragment"
         android:name="com.kvw.technicaltestmediamonks.ui.users.UsersFragment"
         android:label="users_fragment"
-        tools:layout="@layout/users_fragment" />
+        tools:layout="@layout/users_fragment" >
+        <action
+            android:id="@+id/action_usersFragment_to_userAlbumsFragment"
+            app:destination="@id/userAlbumsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userAlbumsFragment"
+        android:name="com.kvw.technicaltestmediamonks.ui.user_albums.UserAlbumsFragment"
+        android:label="user_albums_fragment"
+        tools:layout="@layout/user_albums_fragment" >
+        <argument
+            android:name="user"
+            app:argType="com.kvw.technicaltestmediamonks.models.User" />
+    </fragment>
 </navigation>
