@@ -6,16 +6,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.kvw.technicaltestmediamonks.R
+import kotlinx.android.synthetic.main.users_fragment.*
 
 
 class UsersFragment : Fragment() {
 
+    private val viewModel: UsersViewModel by viewModels()
+
     companion object {
         fun newInstance() = UsersFragment()
     }
-
-    private lateinit var viewModel: UsersViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,8 +29,9 @@ class UsersFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(UsersViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
+        viewModel.users.observe(this, Observer {
+            recyclerView_users_users.swapAdapter(UserAdapter(it) {}, true)
+        })
+    }
 }
