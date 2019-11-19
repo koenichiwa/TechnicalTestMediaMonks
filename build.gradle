@@ -8,7 +8,8 @@ buildscript {
                 gradle: '3.5.2',
                 kotlin: '1.3.50',
                 nav: '2.1.0',
-                retrofit: '2.6.2'
+                retrofit: '2.6.2',
+                koin: '2.0.1'
         ]
     }
     repositories {
