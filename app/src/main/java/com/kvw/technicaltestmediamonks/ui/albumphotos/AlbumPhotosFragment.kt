@@ -11,12 +11,12 @@ import com.kvw.technicaltestmediamonks.R
 
 class AlbumPhotosFragment : Fragment() {
 
+
+
     companion object {
         fun newInstance() =
             AlbumPhotosFragment()
     }
-
-    private lateinit var viewModel: AlbumPhotosViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,7 +27,6 @@ class AlbumPhotosFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(AlbumPhotosViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

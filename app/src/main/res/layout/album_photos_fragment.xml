@@ -5,9 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".ui.albumphotos.AlbumPhotosFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_albumPhotos_photos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        tools:listitem="@layout/item_albumphotos_photo" />
 
 </FrameLayout>
