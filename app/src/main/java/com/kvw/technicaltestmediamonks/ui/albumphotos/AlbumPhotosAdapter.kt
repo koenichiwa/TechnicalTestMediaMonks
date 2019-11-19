@@ -24,7 +24,7 @@ class AlbumPhotosAdapter(private val photos: List<Photo>) :
         with(holder.itemView){
             textView_itemPhoto_title.text = photos[position].title
 
-            Glide.with(this).load(photos[position]).into(imageView_itemPhoto_photo)
+            Glide.with(this).load(photos[position].url).into(imageView_itemPhoto_photo)
         }
     }
 
