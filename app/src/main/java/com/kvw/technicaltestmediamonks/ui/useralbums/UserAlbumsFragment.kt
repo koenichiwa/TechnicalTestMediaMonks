@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.kvw.technicaltestmediamonks.R
 import kotlinx.android.synthetic.main.user_albums_fragment.*
@@ -32,7 +33,12 @@ class UserAlbumsFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         userAlbumsViewModel.albums.observe(this, Observer { albumList ->
             recyclerView_userAlbums_albums.swapAdapter(
-                UserAlbumsAdapter(albumList) {},
+                UserAlbumsAdapter(albumList) { album ->
+                    findNavController().navigate(
+                        UserAlbumsFragmentDirections
+                            .actionUserAlbumsFragmentToAlbumPhotosFragment(album)
+                    )
+                },
                 true
             )
         })

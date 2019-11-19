@@ -22,5 +22,17 @@
         <argument
             android:name="user"
             app:argType="com.kvw.technicaltestmediamonks.models.User" />
+        <action
+            android:id="@+id/action_userAlbumsFragment_to_albumPhotosFragment"
+            app:destination="@id/albumPhotosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumPhotosFragment"
+        android:name="com.kvw.technicaltestmediamonks.ui.albumphotos.AlbumPhotosFragment"
+        android:label="album_photos_fragment"
+        tools:layout="@layout/album_photos_fragment" >
+        <argument
+            android:name="album"
+            app:argType="com.kvw.technicaltestmediamonks.models.Album" />
     </fragment>
 </navigation>
