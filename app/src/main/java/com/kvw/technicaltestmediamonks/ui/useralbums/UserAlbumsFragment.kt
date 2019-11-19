@@ -1,6 +1,5 @@
-package com.kvw.technicaltestmediamonks.ui.user_albums
+package com.kvw.technicaltestmediamonks.ui.useralbums
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
