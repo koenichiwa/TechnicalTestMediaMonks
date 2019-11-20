@@ -1,25 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/single_margin"
+    app:cardElevation="@dimen/double_margin"
+    app:cardBackgroundColor="@color/colorPrimaryLight"
+    android:layout_margin="@dimen/single_margin">
 
-    <TextView
-        android:id="@+id/textView_userItem_name"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Name" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView_userItem_username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Username" />
+        <TextView
+            android:id="@+id/textView_userItem_username"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/single_margin"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView_userItem_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Username" />
 
-    <TextView
-        android:id="@+id/textView_userItem_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="Email" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/textView_userItem_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/single_margin"
+            android:layout_marginEnd="@dimen/single_margin"
+            android:layout_marginBottom="@dimen/no_margin"
+            android:layout_marginStart="@dimen/double_margin"
+            app:layout_constraintBottom_toTopOf="@+id/textView_userItem_email"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_userItem_username"
+            tools:text="Name" />
+
+        <TextView
+            android:id="@+id/textView_userItem_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/double_margin"
+            android:layout_marginEnd="@dimen/single_margin"
+            android:layout_marginBottom="@dimen/single_margin"
+            android:layout_marginTop="@dimen/no_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_userItem_name"
+            tools:text="Email" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
