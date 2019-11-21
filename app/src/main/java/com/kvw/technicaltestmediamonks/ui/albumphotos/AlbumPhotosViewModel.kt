@@ -4,19 +4,25 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.kvw.technicaltestmediamonks.models.Album
-import com.kvw.technicaltestmediamonks.models.Photo
-import com.kvw.technicaltestmediamonks.services.PhotoService
+import com.kvw.technicaltestmediamonks.business.models.AlbumModel
+import com.kvw.technicaltestmediamonks.business.models.PhotoModel
+import com.kvw.technicaltestmediamonks.business.repositories.PhotoRepository
+import com.kvw.technicaltestmediamonks.data.retrofit.models.Album
+import com.kvw.technicaltestmediamonks.data.retrofit.models.Photo
+import com.kvw.technicaltestmediamonks.data.retrofit.services.PhotoService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
-class AlbumPhotosViewModel(photoService: PhotoService, _album: Album) : ViewModel() {
-    val album: LiveData<Album> = MutableLiveData(_album)
+class AlbumPhotosViewModel(photoRepository: PhotoRepository, _album: AlbumModel) : ViewModel() {
+    val album: LiveData<AlbumModel> = MutableLiveData(_album)
 
-    private val _photos: MutableLiveData<List<Photo>> = MutableLiveData(emptyList())
-    val photos: LiveData<List<Photo>> get() = _photos
+    private val _photos: MutableLiveData<List<PhotoModel>> = MutableLiveData(emptyList())
+    val photos: LiveData<List<PhotoModel>> get() = _photos
 
     init {
-        viewModelScope.launch(Dispatchers.IO) { _photos.postValue(photoService.getByAlbumId(_album.id)) }
+        viewModelScope.launch(Dispatchers.IO) {
+            _photos.postValue(photoRepository.getPhotosByAlbum(_album))
+        }
     }
 }

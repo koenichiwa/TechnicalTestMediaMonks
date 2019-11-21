@@ -1,22 +1,29 @@
 package com.kvw.technicaltestmediamonks.di
 
+import android.content.Context
 import android.net.Uri
+import androidx.room.Room
 import com.google.gson.GsonBuilder
-import com.kvw.technicaltestmediamonks.models.Album
-import com.kvw.technicaltestmediamonks.models.User
-import com.kvw.technicaltestmediamonks.services.AlbumService
-import com.kvw.technicaltestmediamonks.services.PhotoService
-import com.kvw.technicaltestmediamonks.services.UriTypeAdapter
-import com.kvw.technicaltestmediamonks.services.UserService
+import com.kvw.technicaltestmediamonks.business.models.AlbumModel
+import com.kvw.technicaltestmediamonks.business.models.UserModel
+import com.kvw.technicaltestmediamonks.business.repositories.*
+import com.kvw.technicaltestmediamonks.data.retrofit.services.AlbumService
+import com.kvw.technicaltestmediamonks.data.retrofit.services.PhotoService
+import com.kvw.technicaltestmediamonks.data.retrofit.typeadapters.UriTypeAdapter
+import com.kvw.technicaltestmediamonks.data.retrofit.services.UserService
+import com.kvw.technicaltestmediamonks.data.room.AppDataBase
 import com.kvw.technicaltestmediamonks.ui.albumphotos.AlbumPhotosViewModel
 import com.kvw.technicaltestmediamonks.ui.useralbums.UserAlbumsViewModel
 import com.kvw.technicaltestmediamonks.ui.users.UsersViewModel
+import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object KoinModules {
+    private const val JSON_PLACEHOLDER_BASE_URL = "https://jsonplaceholder.typicode.com"
+    private const val DATABASE_NAME = "jsonplaceholder_db"
 
     val retrofitModule = module {
         single { provideGsonConverterFactory() }
@@ -28,14 +35,27 @@ object KoinModules {
 
     val viewModelModule = module {
         viewModel { UsersViewModel(get()) }
-        viewModel { (user: User) -> UserAlbumsViewModel(get(), user) }
-        viewModel { (album: Album) -> AlbumPhotosViewModel(get(), album) }
+        viewModel { (user: UserModel) -> UserAlbumsViewModel(get(), user) }
+        viewModel { (album: AlbumModel) -> AlbumPhotosViewModel(get(), album) }
     }
 
-    private const val JSON_PLACEHOLDER_BASE_URL = "https://jsonplaceholder.typicode.com/"
+    val repositoryModule = module {
+        factory<AlbumRepository> { AlbumRepositoryImpl(get(), get(), get(), get()) }
+        factory<UserRepository> { UserRepositoryImpl(get(), get()) }
+        factory<PhotoRepository> { PhotoRepositoryImpl(get(), get()) }
+    }
+
+    val roomModule = module {
+        single { provideRoomDatabase(androidContext()) }
+        factory { provideAlbumDAO(get()) }
+        factory { providePhotoDAO(get()) }
+        factory { provideUserDAO(get()) }
+    }
 
     private fun provideGsonConverterFactory(): GsonConverterFactory{
-        GsonBuilder().registerTypeAdapter(Uri::class.java, UriTypeAdapter())
+        GsonBuilder().registerTypeAdapter(Uri::class.java,
+            UriTypeAdapter()
+        )
             .create()
             .let { return GsonConverterFactory.create(it) }
     }
@@ -57,5 +77,14 @@ object KoinModules {
 
     private fun providePhotoService(retrofit: Retrofit): PhotoService =
         retrofit.create(PhotoService::class.java)
+
+    private fun provideRoomDatabase(context: Context) =
+        Room.databaseBuilder(context, AppDataBase::class.java, DATABASE_NAME).build()
+
+    private fun provideAlbumDAO(appDataBase: AppDataBase) = appDataBase.albumDAO()
+
+    private fun provideUserDAO(appDataBase: AppDataBase) = appDataBase.userDAO()
+
+    private fun providePhotoDAO(appDataBase: AppDataBase) = appDataBase.photoDAO()
 
 }

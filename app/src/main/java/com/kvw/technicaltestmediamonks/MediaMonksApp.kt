@@ -14,7 +14,14 @@ class MediaMonksApp : Application(){
         startKoin {
             androidLogger()
             androidContext(this@MediaMonksApp)
-            modules(listOf(KoinModules.retrofitModule, KoinModules.viewModelModule))
+            modules(
+                listOf(
+                    KoinModules.retrofitModule,
+                    KoinModules.viewModelModule,
+                    KoinModules.repositoryModule,
+                    KoinModules.roomModule
+                )
+            )
         }
 
         if (BuildConfig.DEBUG) { Timber.plant(Timber.DebugTree()) }
