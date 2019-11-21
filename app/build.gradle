@@ -18,7 +18,14 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString(),
+                             "room.incremental":"true"]
+            }
+        }
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -62,4 +69,12 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$versions.glide"
     implementation "com.github.bumptech.glide:recyclerview-integration:$versions.glide"
     kapt "com.github.bumptech.glide:compiler:$versions.glide"
+
+    //timber
+    implementation "com.jakewharton.timber:timber:$versions.timber"
+
+    //room
+    implementation "androidx.room:room-runtime:$versions.room"
+    kapt "androidx.room:room-compiler:$versions.room"
+    implementation "androidx.room:room-ktx:$versions.room"
 }

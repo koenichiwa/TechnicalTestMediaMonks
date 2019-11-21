@@ -5,12 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.kvw.technicaltestmediamonks.R
-import com.kvw.technicaltestmediamonks.models.User
+import com.kvw.technicaltestmediamonks.business.models.UserModel
+import com.kvw.technicaltestmediamonks.data.retrofit.models.User
 import kotlinx.android.synthetic.main.item_users_user.view.*
 
 class UserAdapter(
-    private val users: List<User>,
-    private val onClick: (User) -> Unit
+    private val users: List<UserModel>,
+    private val onClick: (UserModel) -> Unit
 ) : RecyclerView.Adapter<UserAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

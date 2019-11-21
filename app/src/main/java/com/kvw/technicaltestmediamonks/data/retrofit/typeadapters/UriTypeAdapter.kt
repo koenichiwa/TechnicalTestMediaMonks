@@ -1,4 +1,4 @@
-package com.kvw.technicaltestmediamonks.services
+package com.kvw.technicaltestmediamonks.data.retrofit.typeadapters
 
 import android.net.Uri
 import com.google.gson.JsonDeserializationContext
