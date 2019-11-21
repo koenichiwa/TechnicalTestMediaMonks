@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.GridLayoutManager
 import com.kvw.technicaltestmediamonks.R
 import kotlinx.android.synthetic.main.album_photos_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel

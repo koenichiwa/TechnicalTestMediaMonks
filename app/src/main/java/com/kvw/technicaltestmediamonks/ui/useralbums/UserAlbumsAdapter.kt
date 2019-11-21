@@ -5,12 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.kvw.technicaltestmediamonks.R
-import com.kvw.technicaltestmediamonks.models.Album
+import com.kvw.technicaltestmediamonks.business.models.AlbumModel
+import com.kvw.technicaltestmediamonks.data.retrofit.models.Album
 import kotlinx.android.synthetic.main.item_useralbum_album.view.*
 
 class UserAlbumsAdapter(
-    private val albums: List<Album>,
-    private val onClick: (Album) -> Unit
+    private val albums: List<AlbumModel>,
+    private val onClick: (AlbumModel) -> Unit
 ) : RecyclerView.Adapter<UserAlbumsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
