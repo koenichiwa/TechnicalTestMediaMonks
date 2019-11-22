@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.kvw.technicaltestmediamonks.R
 import com.kvw.technicaltestmediamonks.business.models.UserModel
-import com.kvw.technicaltestmediamonks.data.retrofit.models.User
 import kotlinx.android.synthetic.main.item_users_user.view.*
 
 class UserAdapter(
@@ -23,7 +22,7 @@ class UserAdapter(
     override fun getItemCount() = users.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        with(holder.itemView){
+        with(holder.itemView) {
             setOnClickListener { onClick(users[position]) }
             textView_userItem_name.text = users[position].name
             textView_userItem_username.text = users[position].username

@@ -7,12 +7,8 @@ import androidx.lifecycle.viewModelScope
 import com.kvw.technicaltestmediamonks.business.models.AlbumModel
 import com.kvw.technicaltestmediamonks.business.models.PhotoModel
 import com.kvw.technicaltestmediamonks.business.repositories.PhotoRepository
-import com.kvw.technicaltestmediamonks.data.retrofit.models.Album
-import com.kvw.technicaltestmediamonks.data.retrofit.models.Photo
-import com.kvw.technicaltestmediamonks.data.retrofit.services.PhotoService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class AlbumPhotosViewModel(photoRepository: PhotoRepository, _album: AlbumModel) : ViewModel() {
     val album: LiveData<AlbumModel> = MutableLiveData(_album)

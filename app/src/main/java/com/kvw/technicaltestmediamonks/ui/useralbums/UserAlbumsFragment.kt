@@ -13,7 +13,6 @@ import kotlinx.android.synthetic.main.user_albums_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
-
 class UserAlbumsFragment : Fragment() {
     private val args: UserAlbumsFragmentArgs by navArgs()
     private val userAlbumsViewModel: UserAlbumsViewModel by viewModel { parametersOf(args.user) }
@@ -23,7 +22,8 @@ class UserAlbumsFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.user_albums_fragment, container, false)
@@ -43,5 +43,4 @@ class UserAlbumsFragment : Fragment() {
             )
         })
     }
-
 }

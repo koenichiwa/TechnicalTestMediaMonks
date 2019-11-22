@@ -20,7 +20,7 @@ class AlbumRepositoryImpl(
     private val photoService: PhotoService,
     private val albumDAO: AlbumDAO,
     private val photoDAO: PhotoDAO
-): AlbumRepository{
+) : AlbumRepository {
     override suspend fun getByUser(userModel: UserModel): List<AlbumModel> {
         Timber.d("Fetching albums by user: %s", userModel)
 
@@ -32,7 +32,7 @@ class AlbumRepositoryImpl(
             .also { Timber.d("Fetched albums from user %s", userModel) }
     }
 
-    private suspend fun fetchAndCacheAlbums(userModel: UserModel): List<AlbumModel>{
+    private suspend fun fetchAndCacheAlbums(userModel: UserModel): List<AlbumModel> {
         Timber.d("Fetching from remote")
         var insertJob: Job
         return albumService
@@ -47,7 +47,7 @@ class AlbumRepositoryImpl(
             .also { insertJob.join() }
     }
 
-    private suspend fun cacheAlbums(albumWithPhotoMap: Map<Album, Photo>, userId: Int){
+    private suspend fun cacheAlbums(albumWithPhotoMap: Map<Album, Photo>, userId: Int) {
         albumDAO.insertAlbums(
             *albumWithPhotoMap
                 .map {
@@ -62,4 +62,3 @@ class AlbumRepositoryImpl(
         )
     }
 }
-

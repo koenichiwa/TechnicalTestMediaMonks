@@ -13,4 +13,4 @@ data class User(
     val website: String,
     val address: Address,
     val company: Company
-): Parcelable
+) : Parcelable

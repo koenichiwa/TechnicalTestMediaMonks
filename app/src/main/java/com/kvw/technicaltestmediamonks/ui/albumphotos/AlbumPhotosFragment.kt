@@ -1,6 +1,5 @@
 package com.kvw.technicaltestmediamonks.ui.albumphotos
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,12 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.GridLayoutManager
 import com.kvw.technicaltestmediamonks.R
 import kotlinx.android.synthetic.main.album_photos_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
-
 
 class AlbumPhotosFragment : Fragment() {
 
@@ -26,7 +23,8 @@ class AlbumPhotosFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.album_photos_fragment, container, false)
@@ -38,5 +36,4 @@ class AlbumPhotosFragment : Fragment() {
             recyclerView_albumPhotos_photos.swapAdapter(AlbumPhotosAdapter(it), true)
         })
     }
-
 }

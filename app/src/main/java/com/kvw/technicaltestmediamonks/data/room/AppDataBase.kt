@@ -13,7 +13,7 @@ import com.kvw.technicaltestmediamonks.data.room.typeconverters.Converters
 
 @Database(entities = [UserDTO::class, PhotoDTO::class, AlbumDTO::class], version = 1)
 @TypeConverters(Converters::class)
-abstract class AppDataBase: RoomDatabase() {
+abstract class AppDataBase : RoomDatabase() {
     abstract fun userDAO(): UserDAO
     abstract fun albumDAO(): AlbumDAO
     abstract fun photoDAO(): PhotoDAO

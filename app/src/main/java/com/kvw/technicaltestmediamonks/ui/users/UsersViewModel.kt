@@ -6,11 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kvw.technicaltestmediamonks.business.models.UserModel
 import com.kvw.technicaltestmediamonks.business.repositories.UserRepository
-import com.kvw.technicaltestmediamonks.data.retrofit.models.User
-import com.kvw.technicaltestmediamonks.data.retrofit.services.UserService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class UsersViewModel(userRepository: UserRepository) : ViewModel() {
 
