@@ -12,7 +12,7 @@ interface PhotoDAO {
     suspend fun getPhotosByAlbumId(albumId: Int): List<PhotoDTO>
 
     @Query("SELECT * FROM PhotoDTO WHERE albumId = :albumId LIMIT 1")
-    suspend fun getFirstPhotoFromAlbum(albumId: Int): PhotoDTO
+    suspend fun getFirstPhotoFromAlbum(albumId: Int): PhotoDTO?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPhotos(vararg photoDTO: PhotoDTO)

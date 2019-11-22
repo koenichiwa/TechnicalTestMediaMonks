@@ -25,7 +25,9 @@ class AlbumRepositoryImpl(
         Timber.d("Fetching albums by user: %s", userModel)
 
         return albumDAO.getAlbumByUserId(userModel.id)
-            .map { AlbumModel(it, photoDAO.getFirstPhotoFromAlbum(it.id)) }
+            .mapNotNull { album ->
+                photoDAO.getFirstPhotoFromAlbum(album.id)?.let { AlbumModel(album, it) }
+            }
             .ifEmpty { fetchAndCacheAlbums(userModel) }
             .also { Timber.d("Fetched albums from user %s", userModel) }
     }
