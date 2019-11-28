@@ -7,6 +7,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 class UserModel(val id: Int, val name: String, val username: String, val email: String) : Parcelable {
-    constructor(user: User): this(user.id, user.name, user.username, user.email)
-    constructor(userDTO: UserDTO): this(userDTO.id, userDTO.name, userDTO.username, userDTO.email)
+    constructor(user: User) : this(user.id, user.name, user.username, user.email)
+    constructor(userDTO: UserDTO) : this(userDTO.id, userDTO.name, userDTO.username, userDTO.email)
 }
