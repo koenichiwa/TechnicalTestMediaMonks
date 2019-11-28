@@ -25,6 +25,7 @@ import com.kvw.technicaltestmediamonks.data.retrofit.services.UserService
 import com.kvw.technicaltestmediamonks.data.room.AppDataBase
 import com.kvw.technicaltestmediamonks.ui.albumphotos.AlbumPhotosViewModel
 import com.kvw.technicaltestmediamonks.ui.useralbums.UserAlbumsViewModel
+import com.kvw.technicaltestmediamonks.ui.userposts.UserPostsViewModel
 import com.kvw.technicaltestmediamonks.ui.users.UsersViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -50,6 +51,7 @@ object KoinModules {
         viewModel { UsersViewModel(get()) }
         viewModel { (user: UserModel) -> UserAlbumsViewModel(get(), user) }
         viewModel { (album: AlbumModel) -> AlbumPhotosViewModel(get(), album) }
+        viewModel { (user: UserModel) -> UserPostsViewModel(get(), user)}
     }
 
     val repositoryModule = module {

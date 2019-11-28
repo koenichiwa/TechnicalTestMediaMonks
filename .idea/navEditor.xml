@@ -41,6 +41,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="userPostsFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="253" />
+                            <option name="y" value="334" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="usersFragment">
                     <value>
                       <LayoutPositions>
@@ -53,6 +65,11 @@
                         <option name="myPositions">
                           <map>
                             <entry key="action_usersFragment_to_userAlbumsFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_usersFragment_to_userPostsFragment">
                               <value>
                                 <LayoutPositions />
                               </value>

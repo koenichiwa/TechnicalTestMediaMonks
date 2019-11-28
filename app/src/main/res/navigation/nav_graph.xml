@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_usersFragment_to_userAlbumsFragment"
             app:destination="@id/userAlbumsFragment" />
+        <action
+            android:id="@+id/action_usersFragment_to_userPostsFragment"
+            app:destination="@id/userPostsFragment" />
     </fragment>
     <fragment
         android:id="@+id/userAlbumsFragment"
@@ -34,5 +37,14 @@
         <argument
             android:name="album"
             app:argType="com.kvw.technicaltestmediamonks.business.models.AlbumModel" />
+    </fragment>
+    <fragment
+        android:id="@+id/userPostsFragment"
+        android:name="com.kvw.technicaltestmediamonks.ui.userposts.UserPostsFragment"
+        android:label="user_posts_fragment"
+        tools:layout="@layout/user_posts_fragment" >
+        <argument
+            android:name="user"
+            app:argType="com.kvw.technicaltestmediamonks.business.models.UserModel" />
     </fragment>
 </navigation>
