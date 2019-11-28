@@ -14,7 +14,7 @@ import timber.log.Timber
 class UserRepositoryImpl(
     private val userService: UserService,
     private val userDAO: UserDAO
-): UserRepository {
+) : UserRepository {
     override suspend fun getAllUsers(): List<UserModel> {
         Timber.d("Fetching all users")
         return try {
@@ -23,7 +23,7 @@ class UserRepositoryImpl(
                 .ifEmpty {
                     fetchAndCacheUsers()
                 }.also { Timber.d("Users fetched") }
-        } catch (t : Throwable){
+        } catch (t: Throwable) {
             Timber.e(t)
             emptyList()
         }
@@ -38,7 +38,7 @@ class UserRepositoryImpl(
             .also { cacheJob.join() }
     }
 
-    private suspend fun cacheUsers(users: List<User>){
+    private suspend fun cacheUsers(users: List<User>) {
         userDAO.insertUsers(
             *users.map { UserDTO(it.id, it.name, it.username, it.email) }.toTypedArray()
         )

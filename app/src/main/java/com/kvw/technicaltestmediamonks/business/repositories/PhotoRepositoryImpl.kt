@@ -15,21 +15,21 @@ import timber.log.Timber
 class PhotoRepositoryImpl(
     private val photoService: PhotoService,
     private val photoDAO: PhotoDAO
-): PhotoRepository {
+) : PhotoRepository {
 
     override suspend fun getPhotosByAlbum(albumModel: AlbumModel): List<PhotoModel> {
         Timber.d("Fetching all photos in album %s", albumModel)
-        return photoDAO.getPhotosByAlbumId(albumModel.id) //fetch from cache
+        return photoDAO.getPhotosByAlbumId(albumModel.id) // fetch from cache
             .map { PhotoModel(it) }
             .ifEmpty { fetchAncCachePhotos(albumModel) }
             .also { Timber.d("Photos fetched from album %s", albumModel) }
     }
 
-    private suspend fun fetchAncCachePhotos(albumModel: AlbumModel): List<PhotoModel>{
+    private suspend fun fetchAncCachePhotos(albumModel: AlbumModel): List<PhotoModel> {
         Timber.d("Fetching from remote")
         var cacheJob: Job
-        return photoService.getByAlbumId(albumModel.id) //if cache empty fetch from API
-            .also { photoList ->                 //fill cache
+        return photoService.getByAlbumId(albumModel.id) // if cache empty fetch from API
+            .also { photoList -> // fill cache
                 cacheJob = coroutineScope {
                     launch(Dispatchers.IO) { cachePhotos(photoList, albumModel) }
                 }
@@ -37,7 +37,7 @@ class PhotoRepositoryImpl(
             .also { cacheJob.join() }
     }
 
-    private suspend fun cachePhotos(photos: List<Photo>, albumModel: AlbumModel){
+    private suspend fun cachePhotos(photos: List<Photo>, albumModel: AlbumModel) {
         photoDAO.insertPhotos(
             *photos.map {
                 PhotoDTO(

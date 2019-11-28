@@ -6,7 +6,12 @@ import androidx.room.Room
 import com.google.gson.GsonBuilder
 import com.kvw.technicaltestmediamonks.business.models.AlbumModel
 import com.kvw.technicaltestmediamonks.business.models.UserModel
-import com.kvw.technicaltestmediamonks.business.repositories.*
+import com.kvw.technicaltestmediamonks.business.repositories.AlbumRepository
+import com.kvw.technicaltestmediamonks.business.repositories.AlbumRepositoryImpl
+import com.kvw.technicaltestmediamonks.business.repositories.PhotoRepository
+import com.kvw.technicaltestmediamonks.business.repositories.PhotoRepositoryImpl
+import com.kvw.technicaltestmediamonks.business.repositories.UserRepository
+import com.kvw.technicaltestmediamonks.business.repositories.UserRepositoryImpl
 import com.kvw.technicaltestmediamonks.data.retrofit.services.AlbumService
 import com.kvw.technicaltestmediamonks.data.retrofit.services.PhotoService
 import com.kvw.technicaltestmediamonks.data.retrofit.typeadapters.UriTypeAdapter
@@ -52,7 +57,7 @@ object KoinModules {
         factory { provideUserDAO(get()) }
     }
 
-    private fun provideGsonConverterFactory(): GsonConverterFactory{
+    private fun provideGsonConverterFactory(): GsonConverterFactory {
         GsonBuilder().registerTypeAdapter(Uri::class.java,
             UriTypeAdapter()
         )
@@ -86,5 +91,4 @@ object KoinModules {
     private fun provideUserDAO(appDataBase: AppDataBase) = appDataBase.userDAO()
 
     private fun providePhotoDAO(appDataBase: AppDataBase) = appDataBase.photoDAO()
-
 }

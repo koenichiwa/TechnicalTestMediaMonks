@@ -8,4 +8,4 @@ import kotlinx.android.parcel.Parcelize
 data class GeoLocation(
     @SerializedName("lat") val latitude: Double,
     @SerializedName("lng") val longitude: Double
-): Parcelable
+) : Parcelable

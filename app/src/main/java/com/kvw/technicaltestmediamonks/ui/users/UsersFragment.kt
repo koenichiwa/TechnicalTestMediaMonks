@@ -11,7 +11,6 @@ import com.kvw.technicaltestmediamonks.R
 import kotlinx.android.synthetic.main.users_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
 class UsersFragment : Fragment() {
 
     private val usersViewModel: UsersViewModel by viewModel()
@@ -21,7 +20,8 @@ class UsersFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.users_fragment, container, false)
