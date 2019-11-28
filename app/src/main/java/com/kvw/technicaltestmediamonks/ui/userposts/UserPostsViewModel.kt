@@ -17,7 +17,7 @@ class UserPostsViewModel(postRepository: PostRepository, _userModel: UserModel) 
     val posts: LiveData<List<PostModel>> get() = _posts
 
     init {
-        viewModelScope.launch(Dispatchers.IO){
+        viewModelScope.launch(Dispatchers.IO) {
             _posts.postValue(postRepository.getPostsByUser(_userModel))
         }
     }

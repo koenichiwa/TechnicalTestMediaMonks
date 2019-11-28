@@ -6,20 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelStoreOwner
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.kvw.technicaltestmediamonks.R
+import com.kvw.technicaltestmediamonks.business.models.UserModel
+import com.kvw.technicaltestmediamonks.ui.userdetail.UserDetailFragmentDirections
+import com.kvw.technicaltestmediamonks.ui.userdetail.UserDetailViewModel
 import kotlinx.android.synthetic.main.user_albums_fragment.*
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.core.parameter.parametersOf
 
-class UserAlbumsFragment : Fragment() {
-    private val args: UserAlbumsFragmentArgs by navArgs()
-    private val userAlbumsViewModel: UserAlbumsViewModel by viewModel { parametersOf(args.user) }
+class UserAlbumsFragment(_userDetailViewModel: UserDetailViewModel) : Fragment() {
+//    private val args: UserAlbumsFragmentArgs by navArgs()
+//    private val userAlbumsViewModel: UserAlbumsViewModel by viewModel { parametersOf(args.user) }
 
-    companion object {
-        fun newInstance() = UserAlbumsFragment()
-    }
+    private val userDetailViewModel: UserDetailViewModel = _userDetailViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,12 +32,13 @@ class UserAlbumsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        userAlbumsViewModel.albums.observe(this, Observer { albumList ->
+
+        userDetailViewModel.albums.observe(this, Observer { albumList ->
             recyclerView_userAlbums_albums.swapAdapter(
                 UserAlbumsAdapter(albumList) { album ->
-                    findNavController().navigate(
-                        UserAlbumsFragmentDirections
-                            .actionUserAlbumsFragmentToAlbumPhotosFragment(album)
+                    parentFragment?.findNavController()?.navigate(
+                        UserDetailFragmentDirections
+                            .actionUserDetailFragmentToAlbumPhotosFragment(album)
                     )
                 },
                 true

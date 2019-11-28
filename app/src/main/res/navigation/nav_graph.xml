@@ -11,23 +11,8 @@
         android:label="users_fragment"
         tools:layout="@layout/users_fragment" >
         <action
-            android:id="@+id/action_usersFragment_to_userAlbumsFragment"
-            app:destination="@id/userAlbumsFragment" />
-        <action
-            android:id="@+id/action_usersFragment_to_userPostsFragment"
-            app:destination="@id/userPostsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/userAlbumsFragment"
-        android:name="com.kvw.technicaltestmediamonks.ui.useralbums.UserAlbumsFragment"
-        android:label="user_albums_fragment"
-        tools:layout="@layout/user_albums_fragment" >
-        <argument
-            android:name="user"
-            app:argType="com.kvw.technicaltestmediamonks.business.models.UserModel" />
-        <action
-            android:id="@+id/action_userAlbumsFragment_to_albumPhotosFragment"
-            app:destination="@id/albumPhotosFragment" />
+            android:id="@+id/action_usersFragment_to_userDetailFragment"
+            app:destination="@id/userDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/albumPhotosFragment"
@@ -39,12 +24,15 @@
             app:argType="com.kvw.technicaltestmediamonks.business.models.AlbumModel" />
     </fragment>
     <fragment
-        android:id="@+id/userPostsFragment"
-        android:name="com.kvw.technicaltestmediamonks.ui.userposts.UserPostsFragment"
-        android:label="user_posts_fragment"
-        tools:layout="@layout/user_posts_fragment" >
+        android:id="@+id/userDetailFragment"
+        android:name="com.kvw.technicaltestmediamonks.ui.userdetail.UserDetailFragment"
+        android:label="user_detail_fragment"
+        tools:layout="@layout/user_detail_fragment" >
         <argument
             android:name="user"
             app:argType="com.kvw.technicaltestmediamonks.business.models.UserModel" />
+        <action
+            android:id="@+id/action_userDetailFragment_to_albumPhotosFragment"
+            app:destination="@id/albumPhotosFragment" />
     </fragment>
 </navigation>
