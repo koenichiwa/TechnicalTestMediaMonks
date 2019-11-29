@@ -34,5 +34,17 @@
         <action
             android:id="@+id/action_userDetailFragment_to_albumPhotosFragment"
             app:destination="@id/albumPhotosFragment" />
+        <action
+            android:id="@+id/action_userDetailFragment_to_postCommentsFragment"
+            app:destination="@id/postCommentsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/postCommentsFragment"
+        android:name="com.kvw.technicaltestmediamonks.ui.postcomments.PostCommentsFragment"
+        android:label="post_comments_fragment"
+        tools:layout="@layout/post_comments_fragment" >
+        <argument
+            android:name="post"
+            app:argType="com.kvw.technicaltestmediamonks.business.models.PostModel" />
     </fragment>
 </navigation>
