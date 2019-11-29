@@ -39,8 +39,8 @@ class UserDetailFragment : Fragment() {
         setUpBottomNav()
     }
 
-    private fun setUpBottomNav(){
-        switchFragment(UserAlbumsFragment(userDetailViewModel)) //TODO no argument passing, use sharedViewModel
+    private fun setUpBottomNav() {
+        switchFragment(UserAlbumsFragment(userDetailViewModel)) // TODO no argument passing, use sharedViewModel
 
         bottomNavigation_userdetail.setOnNavigationItemSelectedListener {
             when (it.itemId) {

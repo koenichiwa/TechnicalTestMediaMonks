@@ -12,14 +12,15 @@ import kotlinx.coroutines.launch
 
 class PostCommentsViewModel(
     private val commentRepository: CommentRepository,
-    private val _post: PostModel) : ViewModel() {
+    private val _post: PostModel
+) : ViewModel() {
 
     val post: LiveData<PostModel> = MutableLiveData<PostModel>(_post)
 
     private val _comments = MutableLiveData<List<CommentModel>>(emptyList())
     val comments: LiveData<List<CommentModel>> get() = _comments
 
-    fun onLoad(){
+    fun onLoad() {
         viewModelScope.launch(Dispatchers.IO) {
             _comments.postValue(commentRepository.getCommentsByPost(_post))
         }
