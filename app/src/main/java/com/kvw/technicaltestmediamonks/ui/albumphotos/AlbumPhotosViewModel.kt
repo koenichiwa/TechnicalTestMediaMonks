@@ -10,13 +10,16 @@ import com.kvw.technicaltestmediamonks.business.repositories.PhotoRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class AlbumPhotosViewModel(photoRepository: PhotoRepository, _album: AlbumModel) : ViewModel() {
+class AlbumPhotosViewModel(
+    private val photoRepository: PhotoRepository,
+    private val _album: AlbumModel
+) : ViewModel() {
     val album: LiveData<AlbumModel> = MutableLiveData(_album)
 
     private val _photos: MutableLiveData<List<PhotoModel>> = MutableLiveData(emptyList())
     val photos: LiveData<List<PhotoModel>> get() = _photos
 
-    init {
+    fun onLoad() {
         viewModelScope.launch(Dispatchers.IO) {
             _photos.postValue(photoRepository.getPhotosByAlbum(_album))
         }
