@@ -10,7 +10,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class AlbumModel(val id: Int, val title: String, val thumbnailUri: Uri) : Parcelable {
-    constructor(album: Album, photo: Photo): this(album.id, album.title, photo.thumbnailUrl)
-    constructor(albumDTO: AlbumDTO, photoDTO: PhotoDTO)
-            : this(albumDTO.id, albumDTO.title, photoDTO.thumnailUrl)
+    constructor(album: Album, photo: Photo) : this(album.id, album.title, photo.thumbnailUrl)
+    constructor(albumDTO: AlbumDTO, photoDTO: PhotoDTO) :
+            this(albumDTO.id, albumDTO.title, photoDTO.thumnailUrl)
 }

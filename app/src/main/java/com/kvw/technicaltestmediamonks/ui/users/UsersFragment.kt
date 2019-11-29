@@ -33,7 +33,8 @@ class UsersFragment : Fragment() {
         usersViewModel.users.observe(this, Observer { userList ->
             recyclerView_users_users.swapAdapter(UserAdapter(userList) { user ->
                 findNavController().navigate(
-                    UsersFragmentDirections.actionUsersFragmentToUserAlbumsFragment(user)
+                    // UsersFragmentDirections.actionUsersFragmentToUserAlbumsFragment(user)
+                    UsersFragmentDirections.actionUsersFragmentToUserDetailFragment(user)
                 )
             }, true)
         })
