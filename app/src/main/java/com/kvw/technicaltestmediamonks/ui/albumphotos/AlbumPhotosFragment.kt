@@ -32,6 +32,9 @@ class AlbumPhotosFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        albumPhotosViewModel.onLoad()
+
         albumPhotosViewModel.photos.observe(this, Observer {
             recyclerView_albumPhotos_photos.swapAdapter(AlbumPhotosAdapter(it), true)
         })
